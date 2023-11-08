@@ -8,19 +8,47 @@ function SearchFilters({ onSearch }) {
   const [endDate, setEndDate] = useState('');
 
   const handleSearch = () => {
-    onSearch({ city, state, country, startDate, endDate });
-  }
+    // Create a searchCriteria object with the filter values
+    const searchCriteria = {
+      city: city.trim(),
+      state: state.trim(),
+      country: country.trim(),
+      startDate: startDate.trim(),
+      endDate: endDate.trim(),
+    };
+
+    // Pass the search criteria to the parent component for searching
+    onSearch(searchCriteria);
+  };
 
   return (
     <div>
-      <input type="text" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
-      <input type="text" placeholder="State" value={state} onChange={(e) => setState(e.target.value)} />
-      <input type="text" placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)} />
-      <input type="date" placeholder="Start Date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-      <input type="date" placeholder="End Date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-      <button onClick={handleSearch}>Search</button>
+      <h2>Search Filters</h2>
+      <div>
+        <label>City:</label>
+        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+      </div>
+      <div>
+        <label>State:</label>
+        <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
+      </div>
+      <div>
+        <label>Country:</label>
+        <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
+      </div>
+      <div>
+        <label>Start Date:</label>
+        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+      </div>
+      <div>
+        <label>End Date:</label>
+        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+      </div>
+      <div>
+        <button onClick={handleSearch}>Search</button>
+      </div>
     </div>
   );
 }
 
-export { SearchFilters };
+export default SearchFilters;
