@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 
+// Define a functional component called SearchFilters that receives 'onSearch' as a prop
 function SearchFilters({ onSearch }) {
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  // Define 'searchCriteria' state with initial values for 'city', 'state', and 'country'
+  const [searchCriteria, setSearchCriteria] = useState({
+    city: '',
+    state: '',
+    country: '',
+  });
 
+  // Handle input changes for 'city', 'state', and 'country' fields
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    // Update 'searchCriteria' state with the new value
+    setSearchCriteria({ ...searchCriteria, [name]: value });
+  };
+
+  // Handle the search button click event
   const handleSearch = () => {
-    // Create a searchCriteria object with the filter values
-    const searchCriteria = {
-      city: city.trim(),
-      state: state.trim(),
-      country: country.trim(),
-      startDate: startDate.trim(),
-      endDate: endDate.trim(),
-    };
-
-    // Pass the search criteria to the parent component for searching
+    // Call the 'onSearch' function with the current 'searchCriteria' as an argument
     onSearch(searchCriteria);
   };
 
@@ -25,30 +26,41 @@ function SearchFilters({ onSearch }) {
     <div>
       <h2>Search Filters</h2>
       <div>
-        <label>City:</label>
-        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+        <label htmlFor="city">City:</label>
+        {/* Create a dropdown select for 'city' with options */}
+        <select name="city" id="city" onChange={handleInputChange} value={searchCriteria.city}>
+          <option value="">Select City</option>
+          <option value="Atlanta">Atlanta</option>
+          <option value="Albuquerque">Albuquerque</option>
+          <option value="Los Angeles">Los Angeles</option>
+          {/* Add more city options here */}
+        </select>
       </div>
       <div>
-        <label>State:</label>
-        <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
+        <label htmlFor="state">State:</label>
+        {/* Create a dropdown select for 'state' with options */}
+        <select name="state" id="state" onChange={handleInputChange} value={searchCriteria.state}>
+          <option value="">Select State</option>
+          <option value="California">California</option>
+          <option value="Georgia">Georgia</option>
+          <option value="New Mexico">New Mexico</option>
+          {/* Add options for states */}
+        </select>
       </div>
       <div>
-        <label>Country:</label>
-        <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
+        <label htmlFor="country">Country:</label>
+        {/* Create a dropdown select for 'country' with options */}
+        <select name="country" id="country" onChange={handleInputChange} value={searchCriteria.country}>
+          <option value="">Select Country</option>
+          <option value="United States of America">United States of America</option>
+          {/* Add options for countries */}
+        </select>
       </div>
-      <div>
-        <label>Start Date:</label>
-        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-      </div>
-      <div>
-        <label>End Date:</label>
-        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-      </div>
-      <div>
-        <button onClick={handleSearch}>Search</button>
-      </div>
+      {/* Add a button to trigger the search */}
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 }
 
+// Export the SearchFilters component as the default export
 export default SearchFilters;
