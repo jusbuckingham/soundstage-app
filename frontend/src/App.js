@@ -39,26 +39,26 @@ function App() {
       });
   };
 
-  // Use the useEffect hook to perform an action when the component mounts
-  useEffect(() => {
-    // Fetch and display all available sound stages when the app starts
-    axiosInstance
-      .get('/api/soundstages') // Send a GET request to the /api/soundstages endpoint
-      .then((response) => {
-        // Check if the response contains data and it's an array with length > 0
-        if (response.data && response.data.length > 0) {
-          // Update 'soundStages' state with the received data
-          setSoundStages(response.data);
-        } else {
-          // Handle the case when the response is empty, e.g., display a message
-          setSoundStages([]);
-        }
-      })
-      .catch((error) => {
-        // Handle errors, e.g., log them to the console
-        console.error(error);
-      });
-  }, []); // The empty dependency array ensures this effect runs only once on mount
+  // // Use the useEffect hook to perform an action when the component mounts
+  // useEffect(() => {
+  //   // Fetch and display all available sound stages when the app starts
+  //   axiosInstance
+  //     .get('/api/soundstages') // Send a GET request to the /api/soundstages endpoint
+  //     .then((response) => {
+  //       // Check if the response contains data and it's an array with length > 0
+  //       if (response.data && response.data.length > 0) {
+  //         // Update 'soundStages' state with the received data
+  //         setSoundStages(response.data);
+  //       } else {
+  //         // Handle the case when the response is empty, e.g., display a message
+  //         setSoundStages([]);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       // Handle errors, e.g., log them to the console
+  //       console.error(error);
+  //     });
+  // }, []); // The empty dependency array ensures this effect runs only once on mount
 
   // Render the component's JSX
   return (

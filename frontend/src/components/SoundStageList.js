@@ -1,51 +1,33 @@
-// Define a functional component called SoundStageList that receives 'soundStages' as a prop
+import React from 'react';
+
 function SoundStageList({ soundStages }) {
-  // Check if 'soundStages' is not defined or not an array
-  if (!soundStages || !Array.isArray(soundStages)) {
-    // If not, return a loading message
+  // Check if soundStages is defined and is an array
+  if (!soundStages || soundStages.length === 0) {
     return <div>Loading...</div>;
   }
 
-  // If 'soundStages' is defined and is an array, render the following JSX
   return (
-    <div>
-      {/* Map through each 'studio' in the 'soundStages' array */}
-      {soundStages.map((studio, index) => (
-        <div key={index}>
-          {/* Display the 'studio_name' */}
-          <h2>{studio.studio_name}</h2>
-
-          {/* Map through each 'soundStage' in the 'studio.sound_stages' array */}
-          {studio.sound_stages.map((soundStage, stageIndex) => (
-            <div key={stageIndex}>
-              {/* Display the 'stage_number' */}
-              <h3>Sound Stage {soundStage.stage_number}</h3>
-
-              {/* Display the 'city', 'state', and 'country' */}
-              <h3>City: {studio.city}</h3>
-              <h3>State: {studio.state}</h3>
-              <h3>Country: {studio.country}</h3>
-
-              {/* Display available_dates */}
-              <h4>Available Dates:</h4>
-              <ul>
-                {/* Map through each 'date' in the 'soundStage.available_dates' array */}
-                {soundStage.available_dates.map((date, dateIndex) => (
-                  <li key={dateIndex}>
-                    {/* Display the 'start_date' */}
-                    Start Date: {date.start_date}
-                    {/* Display 'end_date' if it exists */}
-                    {date.end_date && <span>, End Date: {date.end_date}</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <div className="container mt-5">
+      {soundStages.map((stage, index) => (
+        <div key={index} className="card mb-4">
+          <div className="card-body">
+            <h2 className="card-title">{stage.studio_name}</h2>
+            <h3 className="mb-1"><strong>City:</strong> {stage.city}</h3>
+            <h3 className="mb-1"><strong>State:</strong> {stage.state}</h3>
+            <h3 className="mb-1"><strong>Country:</strong> {stage.country}</h3>
+            <h3 className="mb-1"><strong>Sound Stage:</strong> {stage.stage_number}</h3>
+            <h4 className="mt-3">Available Dates:</h4>
+            <ul className="list-unstyled">
+              <li>
+                <strong>Start Date:</strong> {stage.start_date}
+                {stage.end_date && <span>, <strong>End Date:</strong> {stage.end_date}</span>}
+              </li>
+            </ul>
+          </div>
         </div>
       ))}
     </div>
   );
 }
 
-// Export the SoundStageList component as the default export
 export default SoundStageList;

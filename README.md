@@ -1,17 +1,22 @@
-# Soundstage Search App
+# SoundStage Search
 
-The Soundstage Search App is a web application that allows production executives to search for available sound stages based on location and date range. It features a sleek and modern user interface, designed to resemble Apple-style aesthetics. The project is divided into a frontend, built with React, and a backend, built with Node.js.
+## Purpose of this Application
+SoundStage Search is a web application that allows users to search for sound stages based on various criteria such as city, state, country, start date, and end date. It provides information about available sound stages for various studios.
 
-- **Search Filters**: Users can search for available sound stages based on the following criteria:
-  - City
-  - State
-  - Country
-  - Start Date
-  - End Date
-- **Sleek User Interface**: The application's user interface is designed to be clean and modern, with inspiration from Apple's design principles.
-- **Responsive Design**: The app is responsive and adjusts to different screen sizes.
-- **Backend API**: The backend provides filtering and data retrieval from a sample dataset of sound stages.
+## Technology Stack
+- Express.js, React, Node.js
 
+## How Does it Work?
+SoundStage Search is a full-stack application built using the MERN stack. It utilizes Node.js and Express.js for the server-side logic, MongoDB for data storage, and React for the user interface. The application allows users to search for sound stages based on specific criteria and displays the results in an organized format.
 
-
-
+### Dependencies
+The following dependencies were used in this project:
+```json
+"dependencies": {
+    "axios": "^0.25.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "fs": "0.0.1-security",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+}
