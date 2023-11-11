@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
+// Constants for city and state options
+const CITY_OPTIONS = ["Atlanta", "Albuquerque", "Los Angeles"];
+const STATE_OPTIONS = ["California", "Georgia", "New Mexico"];
+
 function SearchFilters({ onSearch }) {
+  // State to keep track of the current search criteria
   const [searchCriteria, setSearchCriteria] = useState({
     city: '',
     state: '',
@@ -9,37 +14,37 @@ function SearchFilters({ onSearch }) {
     endDate: '',
   });
 
+  // Function to handle changes in the search input fields
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    // Updating the searchCriteria state with new values
     setSearchCriteria({ ...searchCriteria, [name]: value });
   };
 
-  const handleSearch = () => {
-    onSearch(searchCriteria);
-  };
-
+  // Rendering the search filter form
   return (
     <div>
+      {/* City Selection */}
       <div>
         <label htmlFor="city">City:</label>
         <select name="city" id="city" onChange={handleInputChange} value={searchCriteria.city}>
-        <option value="">Select City</option>
-          <option value="Atlanta">Atlanta</option>
-          <option value="Albuquerque">Albuquerque</option>
-          <option value="Los Angeles">Los Angeles</option>
+          <option value="">Select City</option>
+          {/* Mapping through CITY_OPTIONS to render city options */}
+          {CITY_OPTIONS.map(city => <option key={city} value={city}>{city}</option>)}
         </select>
       </div>
+      {/* State Selection */}
       <div>
         <label htmlFor="state">State:</label>
         <select name="state" id="state" onChange={handleInputChange} value={searchCriteria.state}>
-        <option value="">Select State</option>
-          <option value="California">California</option>
-          <option value="Georgia">Georgia</option>
-          <option value="New Mexico">New Mexico</option>
+          <option value="">Select State</option>
+          {/* Mapping through STATE_OPTIONS to render state options */}
+          {STATE_OPTIONS.map(state => <option key={state} value={state}>{state}</option>)}
         </select>
       </div>
+      {/* Start Date Input */}
       <div>
-      <label htmlFor="startDate">Start Date:</label>
+        <label htmlFor="startDate">Start Date:</label>
         <input
           type="date"
           name="startDate"
@@ -48,6 +53,7 @@ function SearchFilters({ onSearch }) {
           value={searchCriteria.startDate}
         />
       </div>
+      {/* End Date Input */}
       <div>
         <label htmlFor="endDate">End Date:</label>
         <input
@@ -58,7 +64,8 @@ function SearchFilters({ onSearch }) {
           value={searchCriteria.endDate}
         />
       </div>
-      <button onClick={handleSearch}>Search</button>
+      {/* Search Button */}
+      <button onClick={() => onSearch(searchCriteria)}>Search</button>
     </div>
   );
 }
