@@ -29,8 +29,6 @@ describe('GET /api/soundstages', () => {
         // Perform an assertion on the response body
         assert(Array.isArray(res.body), 'Response body is not an array');
 
-        // If additional properties are expected, you can make more assertions here
-
         // Call done to finish the test case
         done();
       });
