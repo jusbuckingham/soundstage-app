@@ -4,7 +4,7 @@ const cors = require('cors'); // CORS middleware to enable cross-origin requests
 const fs = require('fs'); // File System module to handle file operations
 
 const app = express(); // Creating an instance of Express
-const port = process.env.PORT || 3001; // Setting the port number, default to 3001 if not specified in environment variables
+const port = process.env.PORT || 3001; // Setting the port number, default to 3001 
 
 // Middlewares
 app.use(express.json()); // Middleware to parse JSON request bodies
@@ -68,4 +68,4 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-module.exports = app; // This line is crucial
+module.exports = app; 
