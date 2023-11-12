@@ -9,8 +9,12 @@
     "react-datepicker": "^4.21.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha 'test/**/*.test.js'"
   },
-  "author": "Your Name",
-  "license": "MIT"
+  "author": "Jus Buckingham",
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
+  }
 }

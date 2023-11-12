@@ -1,4 +1,6 @@
-# SoundStage Search
+# SoundStage App
+
+![UI](misc/soundstage.png "Soundstage UI")
 
 ## Purpose of this Application
 SoundStage Search is a web application that allows production executives to search for sound stages based on various criteria such as city, state, country, start date, and end date. It provides information about available sound stages for various studios.
@@ -9,8 +11,8 @@ SoundStage Search is a web application that allows production executives to sear
 - React
 
 ## Prerequisites
-- Node.js (version X.X or above)
-- npm (version X.X or above)
+- Node.js v17.0.1
+- npm 8.1.0
 
 ## Quick Start Instructions
 1. Clone the repository to your local machine.
